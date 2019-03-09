@@ -1,0 +1,9 @@
+﻿  GridSquares.cpp
+  Source.cpp
+c:\work\sdl\sdlgames\sdl_pebbles\sdl_pebbles\source.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\sdl_pebbles\source.cpp(105): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\sdl_pebbles\source.cpp(118): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\sdl_pebbles\source.cpp(120): warning C4805: '==': unsafe mix of type 'unsigned int' and type 'bool' in operation
+  Texture.cpp
+  Generating Code...
+  SDL_Pebbles.vcxproj -> C:\work\sdl\SDLgames\SDL_Pebbles\Debug\SDL_Pebbles.exe

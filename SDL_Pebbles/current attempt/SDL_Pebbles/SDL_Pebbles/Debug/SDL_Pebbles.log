@@ -1,0 +1,12 @@
+﻿  Source.cpp
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(299): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(330): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(338): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(346): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(354): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(377): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(379): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(390): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(392): warning C4018: '<': signed/unsigned mismatch
+c:\work\sdl\sdlgames\sdl_pebbles\current attempt\sdl_pebbles\sdl_pebbles\source.cpp(411): warning C4018: '<': signed/unsigned mismatch
+  SDL_Pebbles.vcxproj -> C:\work\sdl\SDLgames\SDL_Pebbles\current attempt\SDL_Pebbles\Debug\SDL_Pebbles.exe
