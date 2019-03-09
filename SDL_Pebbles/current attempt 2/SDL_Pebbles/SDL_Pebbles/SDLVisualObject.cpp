@@ -1,5 +1,7 @@
 #include "MasterHeader.h"
 
+
+
 SDL_Renderer* SDLVisualObject::m_renderer = NULL;
 SDL_Window* SDLVisualObject::m_window = NULL;
 int SDLVisualObject::SCREEN_HEIGHT = 1000;
@@ -12,11 +14,12 @@ SDLVisualObject::SDLVisualObject()
 {
 }
 
+
 SDLVisualObject::SDLVisualObject(SDL_Rect destRect, std::string file)
 {
 	m_destRect = destRect;
 	m_type = TYPE_TEXTURE;
-	SDL_Surface* tempSurface = SDL_LoadBMP(file.c_str());
+	SDL_Surface* tempSurface = IMG_Load(file.c_str());
 	if (tempSurface == NULL)
 	{
 		std::cout << SDL_GetError();
@@ -44,6 +47,18 @@ SDLVisualObject::~SDLVisualObject()
 		SDL_DestroyTexture(m_texture);
 }
 
+void SDLVisualObject::setScreenDimensions(int h, int w)
+{
+	SCREEN_HEIGHT = h;
+	SCREEN_WIDTH = w;
+}
+
+void SDLVisualObject::getScreenDimensions(int & h, int & w)
+{
+	h = SCREEN_HEIGHT;
+	w = SCREEN_WIDTH;
+}
+
 bool SDLVisualObject::initSDL()
 {
 	bool successFlag{ true };
@@ -67,6 +82,15 @@ bool SDLVisualObject::initSDL()
 			{
 				std::cout << SDL_GetError() << std::endl;
 				successFlag = false;
+			}
+			else
+			{
+				int imageFlags{ IMG_INIT_JPG | IMG_INIT_JPG };
+				if ((IMG_Init(imageFlags) & imageFlags) != imageFlags)
+				{
+					std::cout << SDL_GetError() << std::endl;
+					successFlag = false;
+				}
 			}
 		}	
 	}
@@ -92,12 +116,22 @@ void SDLVisualObject::renderPresentSDL()
 	SDL_RenderPresent(m_renderer);
 }
 
-void SDLVisualObject::copyRender()
+void SDLVisualObject::copyRender(int newX, int newY)
 {
+	if (newX >= 0 && newY >= 0)
+	{
+		m_destRect.x = newX;
+		m_destRect.y = newY;
+	}
 	switch (m_type)
 	{
 	case SDLVisualObject::TYPE_TEXTURE:
-		SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
+		if (m_destRect.h == NULL)
+		{
+			SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
+		}
+		else
+			SDL_RenderCopy(m_renderer, m_texture, NULL, &m_destRect);
 		break;
 	case SDLVisualObject::TYPE_POINT:
 		break;
@@ -107,3 +141,4 @@ void SDLVisualObject::copyRender()
 		break;
 	}
 }
+

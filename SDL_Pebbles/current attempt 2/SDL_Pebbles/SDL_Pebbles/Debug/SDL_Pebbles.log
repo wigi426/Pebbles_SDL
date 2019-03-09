@@ -1,2 +1,4 @@
-﻿  Source.cpp
-  SDL_Pebbles.vcxproj -> C:\work\sdl\SDLgames\SDL_Pebbles\current attempt 2\SDL_Pebbles\Debug\SDL_Pebbles.exe
+﻿  GridSquare.cpp
+c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(38): warning C4018: '<': signed/unsigned mismatch
+  SDL_Pebbles.vcxproj -> C:\Users\danie\Documents\GitHub\Pebbles_SDL\SDL_Pebbles\current attempt 2\SDL_Pebbles\Debug\SDL_Pebbles.exe

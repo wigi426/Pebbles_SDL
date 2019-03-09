@@ -2,28 +2,33 @@
 
 int main(int argc, char *argv[])
 {
+
+	SDL_DisplayMode winDisplayInfo;
+	SDL_GetDesktopDisplayMode(0, &winDisplayInfo);
+	SDLVisualObject::setScreenDimensions(500, 500);
 	
 	SDLVisualObject::initSDL();
 
-	SDLVisualObject marbles( SDL_Rect{ 0, 0, 900, 900 }, "images/marbles.bmp");
+	std::vector<SDLVisualObject> textures;
+	textures.resize(TEXTURE_TOTAL);
+	
+	SDLVisualObject gameGrid(SDL_Rect{ NULL }, "images/gameGrid.png");
+	SDLVisualObject pebbleOccupied(SDL_Rect{ 0, 0, 50, 50 }, "images/pebble.png");
+	SDLVisualObject pebbleSelected(SDL_Rect{ 0, 0, 50, 50 }, "images/pebbleSelect.png");
+	SDLVisualObject pebblePotential(SDL_Rect{ 0, 0, 50, 50 }, "images/pebblePotential.png");
+
+	textures.at(TEXTURE_OCCUPIED) = pebbleOccupied;
+	textures.at(TEXTURE_SELECTED) = pebbleSelected;
+	textures.at(TEXTURE_POTENTIAL) = pebblePotential;
 
 
-	std::vector<std::vector<int>> twoDvector;
+	GridSquare::intiSquaresVector(5, 5);
 
-	twoDvector.resize(5);
+	//these numbers each represent a single grid square counting up from left to right
+	//and then from top to bottom, 4 is the top right, 24 the bottom right, 12 the middle
+	std::vector<int> startIndexes{ 0, 7, 23, 10 };
 
-	for (int x{}; x < 5; ++x)
-	{	
-		twoDvector.at(x).resize(5);
-		for (int y{}; y < 5; ++y)
-		{
-			twoDvector.at(x).at(y) = x * y;
-			std::cout << "[" << x << "][" << y << "] = " << twoDvector.at(x).at(y);
-		}
-		std::cout << "\n";
-	}
-
-	std::cout << twoDvector.size();
+	GridSquare::setStartPebbles(startIndexes);
 
 
 	bool quit{ false };
@@ -45,7 +50,8 @@ int main(int argc, char *argv[])
 
 		SDLVisualObject::renderClearSDL();
 
-		marbles.copyRender();
+		gameGrid.copyRender();
+		GridSquare::renderGrid(textures);
 
 		SDLVisualObject::renderPresentSDL();
 

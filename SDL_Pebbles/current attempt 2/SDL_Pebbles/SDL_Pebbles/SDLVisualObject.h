@@ -18,6 +18,10 @@ public:
 
 	~SDLVisualObject();
 
+	static void setScreenDimensions(int h, int w);
+	static void getScreenDimensions(int &h, int &w);
+
+
 	static bool initSDL();
 
 	static void closeSDL();
@@ -26,7 +30,7 @@ public:
 
 	static void renderPresentSDL();
 
-	void copyRender();
+	void copyRender(int newX = -1, int newY = -1);
 
 	enum Type
 	{
