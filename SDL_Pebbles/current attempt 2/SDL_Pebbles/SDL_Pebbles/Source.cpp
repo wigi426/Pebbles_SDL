@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 			}
 			if (SDLVisualObject::event.type == SDL_MOUSEBUTTONDOWN)
 			{
-
+				GridSquare::gridClicked(SDLVisualObject::event.button.x, SDLVisualObject::event.button.y);
 			}
 		}
 
