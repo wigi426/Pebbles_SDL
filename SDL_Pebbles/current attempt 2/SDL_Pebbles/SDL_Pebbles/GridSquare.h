@@ -14,7 +14,8 @@ public:
 
 	static void renderGrid(std::vector<SDLVisualObject> &textures);
 
-	
+
+
 
 private:
 	static std::vector<std::vector<GridSquare>> sm_squares;
@@ -40,20 +41,24 @@ private:
 		int y;
 	};
 
+
 	struct Selection
 	{
 		axis flatAxis;
 		std::vector<Coordinates> selectedIndex;
 	};
 
-	
 
-	Selection m_selection;
+	static Selection sm_selection;
+
 	renderState m_state{ EMPTY }; //represents how the state that will be passed on to the user
 	int m_i_potentialFor{}; //index to element in squares index
 
-	void select(int thisX, int thisY);
-	void deselect();
+	void select( int thisX, int thisY);
+	void deselect(int thisX, int thisY);
 	void moveTo();
+
+	static void printSelectionIndex();
+	static void sortSelectionIndex();
 };
 

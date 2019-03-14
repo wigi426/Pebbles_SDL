@@ -1,6 +1,7 @@
 #include "MasterHeader.h"
 
 std::vector<std::vector<GridSquare>> GridSquare::sm_squares;
+GridSquare::Selection GridSquare::sm_selection;
 
 GridSquare::GridSquare()
 {
@@ -80,45 +81,103 @@ void GridSquare::gridClicked(int mouseX, int mouseY)
 	}
 }
 
-void GridSquare::select(int thisX, int thisY)
+void GridSquare::printSelectionIndex()
 {
-	if (m_selection.selectedIndex.size() > 0)
+	std::cout << "selection Index:\n";
+	for (auto element : sm_selection.selectedIndex)
 	{
-		if (m_selection.selectedIndex.size() < 2)
+		std::cout << "{ " << element.x << ", " << element.y << "}\n";
+	}
+}
+
+void GridSquare::sortSelectionIndex()
+{
+	if (sm_selection.flatAxis == X)
+	{
+		for (int i{}; i < sm_selection.selectedIndex.size(); ++i)
 		{
-			if (m_selection.selectedIndex.at(0).x == thisX)
+			for (int j{}; j < sm_selection.selectedIndex.size() - 1; ++j)
 			{
-				m_selection.flatAxis = X;
-				m_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
-				m_state = SELECTED;
-			}
-			else if( m_selection.selectedIndex.at(0).y == thisY)
-			{
-				m_selection.flatAxis = Y;
-				m_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
-				m_state = SELECTED;
-			}
-		}
-		else
-		{
-			if (m_selection.flatAxis == X && thisX == m_selection.selectedIndex.at(0).x)
-			{
-				m_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
-				m_state = SELECTED;
-			}
-			else if (m_selection.flatAxis == Y && thisY == m_selection.selectedIndex.at(0).y)
-			{
-				m_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
-				m_state = SELECTED;
+				if (sm_selection.selectedIndex.at(j).y > sm_selection.selectedIndex.at(j+1).y)
+				{
+					std::swap(sm_selection.selectedIndex.at(j), sm_selection.selectedIndex.at(j+1));	
+					
+				}
 			}
 		}
 	}
 	else
 	{
-		m_state = SELECTED;
-		m_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+		for (int i{}; i < sm_selection.selectedIndex.size(); ++i)
+		{
+			for (int j{}; j < sm_selection.selectedIndex.size() - 1; ++j)
+			{
+				if (sm_selection.selectedIndex.at(j).x > sm_selection.selectedIndex.at(j+1).x)
+				{
+					std::swap(sm_selection.selectedIndex.at(j), sm_selection.selectedIndex.at(j+1));
+				}
+			}
+		}
 	}
+
 }
 
+void GridSquare::select( int thisX, int thisY)
+{
+	if (sm_selection.selectedIndex.size() > 0)
+	{
+		if (sm_selection.selectedIndex.size() < 2)
+		{
+			if (sm_selection.selectedIndex.at(0).x == thisX && 
+					(sm_selection.selectedIndex.at(0).y +1 == thisY ||
+					sm_selection.selectedIndex.at(0).y -1 == thisY) )
+			{
+				sm_selection.flatAxis = X;
+				sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+				m_state = SELECTED;
+			}
+			else if( sm_selection.selectedIndex.at(0).y == thisY &&
+					(sm_selection.selectedIndex.at(0).x +1 == thisX ||
+					sm_selection.selectedIndex.at(0).x -1 == thisX) )
+			{
+				sm_selection.flatAxis = Y;
+				sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+				m_state = SELECTED;
+			}
+		}
+		else
+		{
+			if (sm_selection.flatAxis == X && thisX == sm_selection.selectedIndex.at(0).x &&
+					(sm_selection.selectedIndex.front().y +1 == thisY ||
+					sm_selection.selectedIndex.back().y -1 == thisY) )
+			{
+				sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+				m_state = SELECTED;
+			}
+			else if (sm_selection.flatAxis == Y && thisY == sm_selection.selectedIndex.at(0).y &&
+					(sm_selection.selectedIndex.front().x +1 == thisX ||
+					sm_selection.selectedIndex.back().x -1 == thisX) )
+			{
+				sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+				m_state = SELECTED;
+			}
+		}
+		sortSelectionIndex();
+	}
+	else
+	{
+		m_state = SELECTED;
+		sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+	}
+	printSelectionIndex();
+}
 
+void GridSquare::deselect(int thisX, int thisY)
+{
+	if (sm_selection.selectedIndex.front().x == thisX && sm_selection.selectedIndex.front().y == thisY)
+	{
+		m_state = OCCUPIED;
+		sm_selection.selectedIndex.erase(0);
+	}
+}
 
