@@ -1,12 +1,10 @@
 ﻿  GridSquare.cpp
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(97): warning C4018: '<': signed/unsigned mismatch
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(99): warning C4018: '<': signed/unsigned mismatch
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(111): warning C4018: '<': signed/unsigned mismatch
-c:\users\danie\documents\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(113): warning C4018: '<': signed/unsigned mismatch
-  SDLVisualObject.cpp
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(39): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(97): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(99): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(111): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(113): warning C4018: '<': signed/unsigned mismatch
   Source.cpp
-  selection.cpp
   Generating Code...
-  SDL_Pebbles.vcxproj -> C:\Users\danie\Documents\GitHub\Pebbles_SDL\SDL_Pebbles\current attempt 2\SDL_Pebbles\Debug\SDL_Pebbles.exe
+  SDL_Pebbles.vcxproj -> C:\work\GitHub\Pebbles_SDL\SDL_Pebbles\current attempt 2\SDL_Pebbles\Debug\SDL_Pebbles.exe

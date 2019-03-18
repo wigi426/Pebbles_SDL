@@ -2,9 +2,6 @@
 
 int main(int argc, char *argv[])
 {
-
-	SDL_DisplayMode winDisplayInfo;
-	SDL_GetDesktopDisplayMode(0, &winDisplayInfo);
 	SDLVisualObject::setScreenDimensions(500, 500);
 	
 	SDLVisualObject::initSDL();
@@ -26,7 +23,7 @@ int main(int argc, char *argv[])
 
 	//these numbers each represent a single grid square counting up from left to right
 	//and then from top to bottom, 4 is the top right, 24 the bottom right, 12 the middle
-	std::vector<int> startIndexes{ 0, 7, 23, 10 };
+	std::vector<int> startIndexes{ 0, 1, 2, 5, 11, 23, 10 };
 
 	GridSquare::setStartPebbles(startIndexes);
 

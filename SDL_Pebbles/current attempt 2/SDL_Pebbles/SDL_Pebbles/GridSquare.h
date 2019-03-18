@@ -53,6 +53,8 @@ private:
 
 	renderState m_state{ EMPTY }; //represents how the state that will be passed on to the user
 	int m_i_potentialFor{}; //index to element in squares index
+	int m_thisX;
+	int m_thisY;
 
 	void select( int thisX, int thisY);
 	void deselect(int thisX, int thisY);
@@ -60,5 +62,6 @@ private:
 
 	static void printSelectionIndex();
 	static void sortSelectionIndex();
+	static bool coorMatch(Coordinates coors, Coordinates clicked);
 };
 

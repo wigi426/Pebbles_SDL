@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <algorithm>
 #include "SDLVisualObject.h"
 #include "GridSquare.h"
 #include "selection.h"
