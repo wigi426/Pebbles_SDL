@@ -30,7 +30,7 @@ public:
 
 	static void renderPresentSDL();
 
-	void copyRender(int newX = -1, int newY = -1);
+	void copyRender(int newX = -1, int newY = -1, int globalAngle = 0);
 
 	enum Type
 	{

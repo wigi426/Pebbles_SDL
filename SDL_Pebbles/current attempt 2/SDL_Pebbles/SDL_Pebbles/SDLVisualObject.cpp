@@ -116,13 +116,14 @@ void SDLVisualObject::renderPresentSDL()
 	SDL_RenderPresent(m_renderer);
 }
 
-void SDLVisualObject::copyRender(int newX, int newY)
+void SDLVisualObject::copyRender(int newX, int newY, int globalAngle)
 {
 	if (newX >= 0 && newY >= 0)
 	{
 		m_destRect.x = newX;
 		m_destRect.y = newY;
 	}
+	SDL_Point center{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 	switch (m_type)
 	{
 	case SDLVisualObject::TYPE_TEXTURE:

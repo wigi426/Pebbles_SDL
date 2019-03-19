@@ -1,5 +1,9 @@
 #include "MasterHeader.h"
 
+//this function should rotate the board, the two arguments tell the function which direction to 
+//rotate and how many roations of 90 degrees to do
+void rotateBoard(Rotation direction, int quarterSpinCount);
+
 int main(int argc, char *argv[])
 {
 	SDLVisualObject::setScreenDimensions(500, 500);
@@ -23,7 +27,7 @@ int main(int argc, char *argv[])
 
 	//these numbers each represent a single grid square counting up from left to right
 	//and then from top to bottom, 4 is the top right, 24 the bottom right, 12 the middle
-	std::vector<int> startIndexes{ 0, 1, 2, 5, 11, 23, 10 };
+	std::vector<int> startIndexes{ 0, 12, 1, 2, 5, 11, 23, 10 };
 
 	GridSquare::setStartPebbles(startIndexes);
 
@@ -47,7 +51,7 @@ int main(int argc, char *argv[])
 
 		SDLVisualObject::renderClearSDL();
 
-		gameGrid.copyRender();
+		gameGrid.copyRender(0, 0, GridSquare::boardAngle);
 		GridSquare::renderGrid(textures);
 
 		SDLVisualObject::renderPresentSDL();
@@ -58,3 +62,5 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
+

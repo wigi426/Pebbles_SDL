@@ -14,7 +14,7 @@ public:
 
 	static void renderGrid(std::vector<SDLVisualObject> &textures);
 
-
+	static int boardAngle;
 
 
 private:
@@ -53,8 +53,7 @@ private:
 
 	renderState m_state{ EMPTY }; //represents how the state that will be passed on to the user
 	Coordinates m_i_potentialFor{}; //index to element in squares index
-	int m_i_thisX; // i for index
-	int m_i_thisY;
+	Coordinates m_i_this{}; // a squares own coordinates in the squares vector
 
 	void select( int thisX, int thisY);
 	void moveTo();

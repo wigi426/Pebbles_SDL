@@ -2,6 +2,7 @@
 
 std::vector<std::vector<GridSquare>> GridSquare::sm_squares;
 GridSquare::Selection GridSquare::sm_selection;
+int GridSquare::boardAngle{ 0 };
 
 GridSquare::GridSquare()
 {
@@ -19,6 +20,13 @@ void GridSquare::intiSquaresVector(int x, int y)
 	for (int i{}; i < x; ++i)
 	{
 		sm_squares.at(i).resize(y);
+	}
+	for (int iX{}; iX < x; ++iX)
+	{
+		for (int iY{}; iY < y; ++iY)
+		{
+			sm_squares.at(iX).at(iY).m_i_this = Coordinates{ iX, iY };
+		}
 	}
 }
 
@@ -44,13 +52,13 @@ void GridSquare::renderGrid(std::vector<SDLVisualObject> &textures)
 			switch (sm_squares.at(x).at(y).m_state)
 			{
 			case OCCUPIED:
-				textures.at(TEXTURE_OCCUPIED).copyRender( (x*(screenW / 5)) + screenH/20, (y*(screenW / 5)) + screenW/20);
+				textures.at(TEXTURE_OCCUPIED).copyRender( (x*(screenW / 5)) + screenH/20, (y*(screenW / 5)) + screenW/20, boardAngle);
 				break;
 			case SELECTED:
-				textures.at(TEXTURE_SELECTED).copyRender((x*(screenW / 5)) + screenH / 20, (y*(screenW / 5)) + screenW / 20);
+				textures.at(TEXTURE_SELECTED).copyRender((x*(screenW / 5)) + screenH / 20, (y*(screenW / 5)) + screenW / 20, boardAngle);
 				break;
 			case POTENTIAL:
-				textures.at(TEXTURE_POTENTIAL).copyRender((x*(screenW / 5)) + screenH / 20, (y*(screenW / 5)) + screenW / 20);
+				textures.at(TEXTURE_POTENTIAL).copyRender((x*(screenW / 5)) + screenH / 20, (y*(screenW / 5)) + screenW / 20, boardAngle);
 				break;
 			case EMPTY:
 				break;
@@ -78,7 +86,7 @@ void GridSquare::gridClicked(int mouseX, int mouseY)
 		sm_squares.at(gridX).at(gridY).select(gridX, gridY);
 		break;
 	case POTENTIAL:
-		//sm_squares.at(gridX).at(gridY).moveTo();
+		sm_squares.at(gridX).at(gridY).moveTo();
 		break;
 	case EMPTY:
 		break;
@@ -225,7 +233,19 @@ void GridSquare::select( int thisX, int thisY)
 					}
 				}
 			}
-			//nothing will happen if they dont share at one axis value
+			//if no selections were added because the new clicked pebble did not bridge to the master
+			//then we will instead replace the master with the new selection:
+			if (sm_selection.selectedIndex.size() == 1)
+			{
+				//clear salections set new clicked as master select
+				for (const auto &element : sm_selection.selectedIndex)
+				{
+					sm_squares.at(element.x).at(element.y).m_state = OCCUPIED;
+				}
+				sm_selection.selectedIndex.clear();
+				m_state = SELECTED;
+				sm_selection.selectedIndex.push_back(Coordinates{ thisX, thisY });
+			}
 		}
 		else
 		{
@@ -372,6 +392,7 @@ void GridSquare::assignPotentials()
 	}
 }
 
+
 void GridSquare::clearPotentials()
 {
 	for (int x{ 0 }; x < sm_squares.size(); ++x)
@@ -382,4 +403,32 @@ void GridSquare::clearPotentials()
 				sm_squares.at(x).at(y).m_state = EMPTY;
 		}
 	}
+}
+
+
+void GridSquare::moveTo()
+{
+	sm_squares.at(m_i_potentialFor.x).at(m_i_potentialFor.y).m_state = EMPTY;
+	m_state = OCCUPIED;
+	if(sm_selection.selectedIndex.size() > 1)
+	{
+		int xAdjustment{ 0 };
+		int yAdjustment{ 0 };
+		m_i_potentialFor.x - 1 == m_i_this.x ? xAdjustment = -1 :  //moving left
+		m_i_potentialFor.x + 1 == m_i_this.x ? xAdjustment = 1 : //mvoing right
+		m_i_potentialFor.y - 1 == m_i_this.y ? yAdjustment = - 1 : //mvoing up
+		m_i_potentialFor.y + 1 == m_i_this.y ? yAdjustment = 1 : NULL ;
+		for (const auto &element : sm_selection.selectedIndex)
+		{
+
+			if(sm_squares.at(element.x).at(element.y).m_state == SELECTED)// prevents emptying middle elements when moving a line longitudinaly 
+				sm_squares.at(element.x).at(element.y).m_state = EMPTY;
+			sm_squares.at(element.x + xAdjustment).at(element.y + yAdjustment).m_state = OCCUPIED;
+		}
+	}
+	sm_selection.selectedIndex.clear();
+
+	//fill middle:
+	if (sm_squares.at(2).at(2).m_state = EMPTY)
+		sm_squares.at(2).at(2).m_state = OCCUPIED;
 }

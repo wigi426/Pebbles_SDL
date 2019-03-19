@@ -16,3 +16,9 @@ enum Textures
 	TEXTURE_POTENTIAL,
 	TEXTURE_TOTAL,
 };
+
+enum Rotation
+{
+	COUNTER_CLOCKWISE,
+	CLOCKWISE,
+};
