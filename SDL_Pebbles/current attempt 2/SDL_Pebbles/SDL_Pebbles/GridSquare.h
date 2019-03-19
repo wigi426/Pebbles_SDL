@@ -52,16 +52,16 @@ private:
 	static Selection sm_selection;
 
 	renderState m_state{ EMPTY }; //represents how the state that will be passed on to the user
-	int m_i_potentialFor{}; //index to element in squares index
-	int m_thisX;
-	int m_thisY;
+	Coordinates m_i_potentialFor{}; //index to element in squares index
+	int m_i_thisX; // i for index
+	int m_i_thisY;
 
 	void select( int thisX, int thisY);
-	void deselect(int thisX, int thisY);
 	void moveTo();
 
 	static void printSelectionIndex();
 	static void sortSelectionIndex();
-	static bool coorMatch(Coordinates coors, Coordinates clicked);
+	static void assignPotentials();
+	static void clearPotentials();
 };
 

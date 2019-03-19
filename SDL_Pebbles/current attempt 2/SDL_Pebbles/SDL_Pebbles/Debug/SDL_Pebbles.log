@@ -1,10 +1,10 @@
 ﻿  GridSquare.cpp
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(39): warning C4018: '<': signed/unsigned mismatch
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(97): warning C4018: '<': signed/unsigned mismatch
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(99): warning C4018: '<': signed/unsigned mismatch
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(111): warning C4018: '<': signed/unsigned mismatch
-c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(113): warning C4018: '<': signed/unsigned mismatch
-  Source.cpp
-  Generating Code...
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(106): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(108): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(120): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(122): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(377): warning C4018: '<': signed/unsigned mismatch
+c:\work\github\pebbles_sdl\sdl_pebbles\current attempt 2\sdl_pebbles\sdl_pebbles\gridsquare.cpp(379): warning C4018: '<': signed/unsigned mismatch
   SDL_Pebbles.vcxproj -> C:\work\GitHub\Pebbles_SDL\SDL_Pebbles\current attempt 2\SDL_Pebbles\Debug\SDL_Pebbles.exe
